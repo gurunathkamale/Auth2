@@ -15,25 +15,6 @@ router.post("/logout", logoutUser);
 router.get("/users", getAllUsers)
 
 
-//protected route
-// router.get("/profile", protect, (req,res)=>{
-//     res.json({message: 'Profile Data', user: req.user})
-// })
-
-// router.get(
-//   '/admin/users',
-//   protect,
-//   authorizeRoles('admin'), // only admins
-//   async (req, res) => {
-//     const users = await User.find().select('-password').lean();
-
-//     res.status(200).json({
-//       success: true,
-//       count: users.length,
-//       data: users,
-//     });
-//   }
-// );
 
 
 
@@ -57,20 +38,6 @@ router.get("/profile", protect, async (req, res) => {
   }
 });
 
-
-//adminOnly 
-// router.get('/admin',protect, authorizeRoles("admin"),(req,res)=>{
-//     res.json({message: "Admin access granted"})
-// })
-
-// router.get("/admin/users", protect, authorizeRoles("admin"), async (req, res) => {
-//   try {
-//     const users = await User.find().select("-password");
-//     res.json(users);
-//   } catch (error) {
-//     res.status(500).json({ message: "Server error" });
-//   }
-// });
 
 router.get(
   '/admin/users',
