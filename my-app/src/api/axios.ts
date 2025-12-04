@@ -2,7 +2,8 @@ import axios from "axios"
 
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    // baseURL: 'http://localhost:5000/api',
+    baseURL: 'https://auth2-ecru.vercel.app/api',
     withCredentials: true,
     headers: {
     "Cache-Control": "no-cache",
