@@ -45,12 +45,13 @@ const AdminDashboard: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div>
+    <div className="bg-black h-20 w-full">
       <h2>Admin Dashboard</h2>
       <p>Welcome, {user?.name}</p>
 
       <button onClick={handleLogout}>Logout</button>
-
+</div>
       <h3>All Users <span style={{color:'red'}}>{count}</span> </h3>
       <ul>
         {users.map((u) => (

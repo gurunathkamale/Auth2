@@ -37,48 +37,54 @@ function Register() {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "40px auto" }}>
-      <h2>Register Form</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="flex items-center justify-center h-screen bg-conic/decreasing from-violet-700 via-lime-300 to-violet-700">
+      <div className="bg-green-100 shadow-2xl rounded-xl w-1/3 pt-3">
+      <h2 className="text-3xl text-center text-green-700">Sign Up Form</h2>
+      <form className="flex flex-col items-center gap-3" onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label>Name</label>
-          <input type="text" placeholder="name" {...register("name")} />
-          {errors.name && <p>{errors.name.message}</p>}
+          <label className="block">Name</label>
+          <input  className="bg-white border p-1 w-2xs" type="text" placeholder="name" {...register("name")} />
+          {errors.name && <p className="text-red-500">{errors.name.message}</p>}
         </div>
         <div>
-          <label>Email</label>
-          <input type="email" placeholder="email" {...register("email")} />
-          {errors.email && <p>{errors.email.message}</p>}
+          <label className="block">Email</label>
+          <input  className="bg-white border p-1 w-2xs" type="email" placeholder="email" {...register("email")} />
+          {errors.email && <p className="text-red-500">{errors.email.message}</p>}
         </div>
         <div>
-          <label>Password</label>
+          <label className="block">Password</label>
           <input
+           className="bg-white border p-1 w-2xs"
             type="password"
             placeholder="password"
             {...register("password")}
           />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && <p className="text-red-500">{errors.password.message}</p>}
         </div>
-        <div>
-          <label>Confirm Password</label>
+        <div >
+          <label className="block" >Confirm Password</label>
           <input
+          className="bg-white border p-1 w-2xs"
             type="password"
+            placeholder="confirm password"
             // placeholder="confirmPassword"
             {...register("confirmPassword")}
           />
-          <label>Role</label>
-           <select {...register("role")}>
+          <label  className="block">Role</label>
+           <select {...register("role")}
+            className="bg-white border">
             <option value="user">User</option>
             <option value="admin">Admin</option>
           </select>
-          {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+          {errors.confirmPassword && <p className="text-red-500">{errors.confirmPassword.message}</p>}
         </div>
-           {errors.root && <p style={{ color: "red" }}>{errors.root.message}</p>}
-        <button type="submit" disabled={isSubmitting}>{isSubmitting ? "Registering......" : "Register"}</button>
-        <p>
-          Already have an Account<Link to="/">login</Link>
+           {errors.root && <p className="text-red-500">{errors.root.message}</p>}
+        <button type="submit" className="bg-indigo-600 w-30 rounded-2xl h-10" disabled={isSubmitting}>{isSubmitting ? "Registering......" : "Register"}</button>
+        <p className="pb-2">
+          Already have an Account <span className="px-2  hover:text-blue-600"><Link to="/">Login</Link></span>
         </p>
       </form>
+    </div>
     </div>
   );
 }

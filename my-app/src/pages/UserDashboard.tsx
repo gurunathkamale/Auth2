@@ -15,12 +15,14 @@ const UserDashboard: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>User Dashboard</h2>
+    <div>
+    <div className="bg-black w-full h-20 items-center flex justify-between text-white ">
       <p>Welcome, {user?.name}</p>
       {/* <p>Email: {user?.email}</p> */}
-      <p>Role: {user?.role}</p>
-      <button onClick={handleLogout}>Logout</button>
+      {/* <p>Role: {user?.role}</p> */}
+      <button onClick={handleLogout} className="bg-green-800 w-25 h-10 mr-3 hover:bg-red-600">Logout</button>
+    </div>
+      <h2 className="text-3xl pt-10 text-center">User Dashboard</h2>
     </div>
   );
 };

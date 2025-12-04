@@ -2,8 +2,8 @@
 
 function PageNotFound() {
   return (
-    <div>
-      <h1>PageNotFound</h1>
+    <div className="flex items-center justify-center h-screen ">
+      <h1 className="text-3xl text-red-500  ">Page NotFound</h1>
     </div>
   );
 }
