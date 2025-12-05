@@ -8,6 +8,9 @@
     // "types": ["vite/client"],
     "types": ["node"],
     "skipLibCheck": true,
+     
+  "allowJs": true,
+
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
 

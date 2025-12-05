@@ -1,5 +1,5 @@
 
-import './App'
+// import "./styles.css"
 // import Login from './pages/Login'
 import AppRoutes from './routes/AppRoutes'
 
@@ -12,7 +12,7 @@ function App() {
     {/* <Login/> */}
       <AppRoutes/>
  
-
+<h1 className='text-red-600'>Guru</h1>
 
     </>
   )
