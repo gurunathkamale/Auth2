@@ -1,5 +1,5 @@
 
-// import './App.css'
+import './App'
 // import Login from './pages/Login'
 import AppRoutes from './routes/AppRoutes'
 
