@@ -23,27 +23,34 @@ app.use(cookieParser())
 //     credentials: true
 //   })
 // );
+try {
+  const allowedOrigins = [
+    "http://localhost:5173",
+    "https://auth2-cyr2.vercel.app"
+  ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      const allowedOrigins = [
-        "http://localhost:5173",
-        "https://auth2-cyr2.vercel.app"
-      ];
+  app.use(
+    cors({
+      origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true); // allow request
+        } else {
+          callback(new Error("Not allowed by CORS"));
+        }
+      },
+      credentials: true,
+    })
+  );
 
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);  // allow request
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+  // Preflight support
+  app.options("*", cors());
 
-// Preflight support
-app.options("*", cors());
+  console.log("CORS configured successfully 👍");
+
+} catch (err) {
+  console.error("CORS configuration error:", err);
+}
+
 
 
 
