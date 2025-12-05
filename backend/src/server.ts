@@ -14,15 +14,37 @@ app.use(cookieParser())
 //     origin: "https://auth2-48zs.vercel.app/",
 //     credentials: true
 // }));
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:5173",
+//    "https://auth2-cyr2.vercel.app"
+//     ],
+//     credentials: true
+//   })
+// );
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-   "https://auth2-cyr2.vercel.app/"
-    ],
-    credentials: true
+    origin: function (origin, callback) {
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://auth2-cyr2.vercel.app"
+      ];
+
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);  // allow request
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
+
+// Preflight support
+app.options("*", cors());
+
 
 
 // dotenv.config()

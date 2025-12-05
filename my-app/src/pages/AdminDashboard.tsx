@@ -46,12 +46,13 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <div>
-    <div className="bg-black h-20 w-full">
-      <h2>Admin Dashboard</h2>
-      <p>Welcome, {user?.name}</p>
+    <div className="bg-black h-20 w-full flex justify-between text-white items-center ">
+      <h2 className="">Admin Dashboard</h2>
+      <p className="">Welcome, {user?.name}</p>
 
-      <button onClick={handleLogout}>Logout</button>
+      <button className="bg-yellow-400 h-10 w-25 rounded-xl mr-2" onClick={handleLogout}>Logout</button>
 </div>
+<div className=" flex flex-col items-center justify-center">
       <h3>All Users <span style={{color:'red'}}>{count}</span> </h3>
       <ul>
         {users.map((u) => (
@@ -61,6 +62,7 @@ const AdminDashboard: React.FC = () => {
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };
