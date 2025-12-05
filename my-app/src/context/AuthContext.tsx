@@ -31,21 +31,47 @@ export const AuthProvide: React.FC<{children: React.ReactNode}> = ({children})=>
     const navigate = useNavigate();
 
     
-    useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const res = await api.get("/auth/profile");
-        setUser(res.data);
-      } catch {
-        setUser(null);
-      } finally {
-        setLoading(false); // ✔ VERY IMPORTANT
-      }
-    };
+//     useEffect(() => {
+//     const fetchProfile = async () => {
+//       try {
+//         const res = await api.get("/auth/profile");
+//         setUser(res.data);
+//       } catch {
+//         setUser(null);
+//       } finally {
+//         setLoading(false); // ✔ VERY IMPORTANT
+//       }
+//     };
 
-    fetchProfile();
-  }, []);
-   // 
+//     fetchProfile();
+//   }, []);
+
+
+   useEffect(() => {
+  const fetchProfile = async () => {
+    try {
+      // If no cookie, don't call API
+      const hasCookie = document.cookie.includes("token="); 
+      // If cookie name is different, adjust accordingly
+
+      if (!hasCookie) {
+        setUser(null);
+        setLoading(false);
+        return;
+      }
+
+      const res = await api.get("/auth/profile", { withCredentials: true });
+      setUser(res.data);
+    } catch {
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchProfile();
+}, []);
+
 
 
     const login = async(email: string, password: string)=>{
