@@ -81,7 +81,7 @@ function Register() {
            {errors.root && <p className="text-red-500">{errors.root.message}</p>}
         <button type="submit" className="bg-indigo-600 w-30 rounded-2xl h-10" disabled={isSubmitting}>{isSubmitting ? "Registering......" : "Register"}</button>
         <p className="pb-2">
-          Already have an Account <span className="px-2  hover:text-blue-600"><Link to="/">Login</Link></span>
+          Already have an Account <span className="px-2  hover:text-blue-600"><Link to="/login">Login</Link></span>
         </p>
       </form>
     </div>

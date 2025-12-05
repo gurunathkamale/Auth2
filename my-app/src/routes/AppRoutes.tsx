@@ -73,10 +73,10 @@ function AppRoutes() {
       {/* <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>
         <Route path="/admin" element={<AdminDashboard />} />
       </Route> */}
+  <Route path="/" element={<Home />} />
 
       <Route element={<ProtectedRoutes allowedRoles={["user", "admin"]} />}>
   <Route path="/user" element={<UserDashboard />} />
-  <Route path="/" element={<Home />} />
 </Route>
 
 <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>

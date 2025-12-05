@@ -30,35 +30,7 @@ export const AuthProvide: React.FC<{children: React.ReactNode}> = ({children})=>
     // const location = useLocation();
     const navigate = useNavigate();
 
-    // useEffect(()=>{
-    //     const fetchProfile= async()=>{
-    //         try {
-
-    //     //          if (location.pathname === "/login" || location.pathname === "/register") {
-    //     //   setLoading(false);
-    //     //   return;
-    //     // }
-
-    //             const res = await api.get("/auth/profile");
-    //             // setUser(res.data)
-
-                
-    //         } catch  {
-    //             // console.log(error)
-    //             setUser(null)
-    //             // throw new Error(handleAxiosError(error));
-
-    //     // if(location.pathname !== '/login'){
-    //     //             navigate('/login', {replace: true})
-    //             // }
-
-    //         }finally{
-    //             setLoading(false)
-    //         }
-    //     }
-
-    //     fetchProfile();
-    // },[]);
+    
     useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -72,13 +44,16 @@ export const AuthProvide: React.FC<{children: React.ReactNode}> = ({children})=>
     };
 
     fetchProfile();
-  }, []); // 
+  }, []);
+   // 
 
 
     const login = async(email: string, password: string)=>{
         try {
             setLoading(true);
-            await api.post("/auth/login", {email,password})
+            // await api.post("/auth/login", {email,password})
+            await api.post("/auth/login", { email, password }, { withCredentials: true });
+
 
             const res = await api.get<User>("/auth/profile");
             setUser(res.data)
